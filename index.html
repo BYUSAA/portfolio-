@@ -212,12 +212,19 @@
         }
 
         .tech-item {
-            padding: 1rem;
+            padding: 1.5rem;
             text-align: center;
             background: rgba(255,255,255,0.05);
             border-radius: 10px;
             transition: var(--transition);
             animation: float 3s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         @keyframes float {
@@ -232,6 +239,7 @@
         .tech-item:hover {
             transform: scale(1.1);
             background: rgba(255,255,255,0.1);
+            box-shadow: 0 10px 20px rgba(100,108,255,0.2);
         }
 
         /* Work Experience Section */
@@ -343,7 +351,26 @@
         }
 
         .footer-social-links {
-            padding-left: 390px;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        footer p {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #888;
         }
 
         /* Animations */
@@ -409,6 +436,15 @@
             .contact-icon i {
                 font-size: 5rem;
             }
+
+            .tech-stack {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .tech-item {
+                padding: 1rem;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -454,15 +490,15 @@
                 <p>From the moment I produced Hello world in the console of my first application, I knew I was hooked into the world of software development. But software development has never been just a job for me, it's offered me an engaging challenge to continually learn and improve my skills in creating high quality software.</p>
                 <div class="curtain"></div>
                 <div class="tech-stack">
-                    <div class="tech-item">TypeScript</div>
-                    <div class="tech-item">JavaScript</div>
-                    <div class="tech-item">HTML & CSS</div>
-                    <div class="tech-item">React</div>
-                    <div class="tech-item">Next.js</div>
-                    <div class="tech-item">Node.js</div>
-                    <div class="tech-item">REST APIs</div>
-                    <div class="tech-item">Git</div>
-                    <div class="tech-item">WordPress</div>
+                    <div class="tech-item">Python</div>
+                    <div class="tech-item">Django</div>
+                    <div class="tech-item">Flask</div>
+                    <div class="tech-item">React Native</div>
+                    <div class="tech-item">GraphQL</div>
+                    <div class="tech-item">Docker</div>
+                    <div class="tech-item">Kubernetes</div>
+                    <div class="tech-item">AWS</div>
+                    <div class="tech-item">MongoDB</div>
                 </div>
             </div>
         </section>
@@ -536,14 +572,12 @@
 
     <footer>
         <div class="container">
-            <div class="social-links">
-                <div class="footer-social-links">
-                    <a href="https://github.com/" target="_blank">GitHub</a>
-                    <a href="https://linkedin.com/in/byusam" target="_blank">LinkedIn</a>
-                    <a href="mailto:byusammartin@gmail.com">Email</a>
-                </div>
+            <div class="footer-social-links">
+                <a href="https://github.com/BYUSAA" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/byusam" target="_blank">LinkedIn</a>
+                <a href="mailto:byusammartin@gmail.com">Email</a>
             </div>
-            <p>© 2024 Byusa M Martin De Poles. All rights reserved.</p>
+            <p>© 2025 Byusa M Martin De Poles. All rights reserved.</p>
         </div>
     </footer>
 
