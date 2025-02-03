@@ -212,88 +212,47 @@
             padding-left: 1.5rem;
         }
 
-        /* Chat Section */
-        .chat-section {
-            padding: 4rem 0;
-            animation: fadeInUp 1s ease;
+        /* Gmail and WhatsApp Section */
+        .contact-section {
+            padding: 6rem 0;
+            text-align: center;
         }
 
-        .chat-container {
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .chat-messages {
-            height: 400px;
-            overflow-y: auto;
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-        }
-
-        .message-input {
+        .contact-icons {
             display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 1rem;
-        }
-
-        .message-input input {
-            flex: 1;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.2);
-            color: var(--text-color);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .message-input input:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px var(--accent-color);
-        }
-
-        /* Buttons */
-        .btn {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
             text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--accent-color);
             color: var(--text-color);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(100,108,255,0.4);
-        }
-
-        /* Social Links */
-        .social-links {
-            display: flex;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .social-links a {
-            color: var(--text-color);
-            font-size: 24px;
             transition: var(--transition);
         }
 
-        .social-links a:hover {
+        .contact-icon i {
+            font-size: 6rem;
             color: var(--accent-color);
-            transform: translateY(-3px);
+            transition: var(--transition);
+        }
+
+        .contact-icon span {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .contact-icon:hover i {
+            transform: scale(1.2);
+            color: #fff;
+        }
+
+        .contact-icon:hover span {
+            color: var(--accent-color);
         }
 
         /* Footer */
@@ -361,6 +320,15 @@
 
             .nav-links {
                 display: none;
+            }
+
+            .contact-icons {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .contact-icon i {
+                font-size: 5rem;
             }
         }
     </style>
@@ -465,22 +433,15 @@
         </section>
 
         <!-- Contact Section -->
-        <section class="chat-section" id="contact">
+        <section class="contact-section" id="contact">
             <div class="container">
-                <h2 class="section-title">Let's Connect</h2>
-                <div class="chat-container">
-                    <div class="chat-messages" id="chatMessages"></div>
-                    <div class="message-input">
-                        <input type="text" placeholder="Share your thoughts, ideas, or opportunities..." id="messageInput">
-                        <button class="btn btn-primary">Send</button>
-                    </div>
-                </div>
-                <div class="contact-methods">
-                    <a href="mailto:byusammartin@gmail.com" class="contact-method">
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="contact-icons">
+                    <a href="mailto:byusammartin@gmail.com" class="contact-icon">
                         <i class="ri-mail-line"></i>
-                        <span>Email</span>
+                        <span>Gmail</span>
                     </a>
-                    <a href="https://wa.me/250784409554" target="_blank" class="contact-method">
+                    <a href="https://wa.me/250784409554" target="_blank" class="contact-icon">
                         <i class="ri-whatsapp-line"></i>
                         <span>WhatsApp</span>
                     </a>
@@ -524,51 +485,6 @@
 
         workSlider.addEventListener('scroll', updateActiveSlide);
         updateActiveSlide(); // Initial call
-
-        // Chat Functionality
-        const messageInput = document.getElementById('messageInput');
-        const chatMessages = document.getElementById('chatMessages');
-        const sendButton = document.querySelector('.btn-primary');
-
-        function addMessage(message) {
-            const messageElement = document.createElement('div');
-            messageElement.style.padding = '1rem';
-            messageElement.style.marginBottom = '1rem';
-            messageElement.style.backgroundColor = 'rgba(100,108,255,0.1)';
-            messageElement.style.borderRadius = '8px';
-            messageElement.style.animation = 'fadeInRight 0.3s ease-out';
-            messageElement.innerHTML = `
-                <strong>You:</strong> ${message}<br>
-                <small style="color: #888;">${new Date().toLocaleString()}</small>
-            `;
-            chatMessages.appendChild(messageElement);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            // Simulated email sending
-            sendEmailMessage(message);
-        }
-
-        function sendEmailMessage(message) {
-            console.log('Sending email with message:', message);
-        }
-
-        sendButton.addEventListener('click', () => {
-            const message = messageInput.value.trim();
-            if (message) {
-                addMessage(message);
-                messageInput.value = '';
-            }
-        });
-
-        messageInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                const message = messageInput.value.trim();
-                if (message) {
-                    addMessage(message);
-                    messageInput.value = '';
-                }
-            }
-        });
 
         // Animate elements on scroll
         const observer = new IntersectionObserver((entries) => {
