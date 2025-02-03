@@ -27,6 +27,7 @@
             background-color: var(--primary-color);
             color: var(--text-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -132,7 +133,6 @@
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 2rem;
-            text-align: center;
         }
 
         .tech-stack {
@@ -256,36 +256,6 @@
             box-shadow: 0 0 0 2px var(--accent-color);
         }
 
-        /* Contact Methods */
-        .contact-methods {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-method {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: rgba(255,255,255,0.05);
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            transition: var(--transition);
-            text-decoration: none;
-            color: var(--text-color);
-        }
-
-        .contact-method:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.1);
-        }
-
-        .contact-method i {
-            font-size: 2rem;
-            color: var(--accent-color);
-        }
-
         /* Buttons */
         .btn {
             padding: 12px 25px;
@@ -313,7 +283,6 @@
             display: flex;
             gap: 20px;
             margin-top: 30px;
-            justify-content: center;
         }
 
         .social-links a {
@@ -336,26 +305,41 @@
         }
 
         .footer-social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
+            padding-left: 390px;
         }
 
         /* Animations */
         @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Responsive Design */
@@ -416,7 +400,7 @@
         <section class="about" id="about">
             <div class="container">
                 <h2 class="section-title">About Me</h2>
-                <p>From the moment I produced Hello world in the console of my first application, I knew I was hooked into the world of software development. But software development has never been just a job for me, it's offered an engaging challenge to continually learn and improve my skills in creating high quality software.</p>
+                <p>From the moment I produced Hello world in the console of my first application, I knew I was hooked into the world of software development. But software development has never been just a job for me, it's offered me an engaging challenge to continually learn and improve my skills in creating high quality software.</p>
                 <div class="tech-stack">
                     <div class="tech-item">TypeScript</div>
                     <div class="tech-item">JavaScript</div>
@@ -431,6 +415,7 @@
             </div>
         </section>
 
+        <!-- Work Experience Section -->
         <section class="work-experience" id="work">
             <div class="container">
                 <h2 class="section-title">Work Experience</h2>
@@ -467,4 +452,142 @@
                     </div>
                     <div class="work-slide">
                         <h3>Software Developer</h3>
-                        <div class="company">
+                        <div class="company">WiredIn Rwanda</div>
+                        <div class="duration">January 2023 - August 2024</div>
+                        <ul class="responsibilities">
+                            <li>Created and designed software applications</li>
+                            <li>Deployed and maintained software</li>
+                            <li>Built custom mobile and web apps</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="chat-section" id="contact">
+            <div class="container">
+                <h2 class="section-title">Let's Connect</h2>
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages"></div>
+                    <div class="message-input">
+                        <input type="text" placeholder="Share your thoughts, ideas, or opportunities..." id="messageInput">
+                        <button class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+                <div class="contact-methods">
+                    <a href="mailto:byusammartin@gmail.com" class="contact-method">
+                        <i class="ri-mail-line"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://wa.me/250784409554" target="_blank" class="contact-method">
+                        <i class="ri-whatsapp-line"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <div class="footer-social-links">
+                    <a href="https://github.com/" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/byusam" target="_blank">LinkedIn</a>
+                    <a href="mailto:byusammartin@gmail.com">Email</a>
+                </div>
+            </div>
+            <p>© 2024 Byusa M Martin De Poles. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+        // Work Experience Slider
+        const workSlider = document.getElementById('workSlider');
+        const slides = document.querySelectorAll('.work-slide');
+
+        function updateActiveSlide() {
+            const scrollPosition = workSlider.scrollLeft;
+            const slideWidth = slides[0].offsetWidth;
+
+            slides.forEach((slide, index) => {
+                const slideCenter = index * slideWidth + slideWidth / 2;
+                if (Math.abs(scrollPosition + workSlider.offsetWidth / 2 - slideCenter) < slideWidth / 2) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+        }
+
+        workSlider.addEventListener('scroll', updateActiveSlide);
+        updateActiveSlide(); // Initial call
+
+        // Chat Functionality
+        const messageInput = document.getElementById('messageInput');
+        const chatMessages = document.getElementById('chatMessages');
+        const sendButton = document.querySelector('.btn-primary');
+
+        function addMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.style.padding = '1rem';
+            messageElement.style.marginBottom = '1rem';
+            messageElement.style.backgroundColor = 'rgba(100,108,255,0.1)';
+            messageElement.style.borderRadius = '8px';
+            messageElement.style.animation = 'fadeInRight 0.3s ease-out';
+            messageElement.innerHTML = `
+                <strong>You:</strong> ${message}<br>
+                <small style="color: #888;">${new Date().toLocaleString()}</small>
+            `;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Simulated email sending
+            sendEmailMessage(message);
+        }
+
+        function sendEmailMessage(message) {
+            console.log('Sending email with message:', message);
+        }
+
+        sendButton.addEventListener('click', () => {
+            const message = messageInput.value.trim();
+            if (message) {
+                addMessage(message);
+                messageInput.value = '';
+            }
+        });
+
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const message = messageInput.value.trim();
+                if (message) {
+                    addMessage(message);
+                    messageInput.value = '';
+                }
+            }
+        });
+
+        // Animate elements on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
