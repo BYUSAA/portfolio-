@@ -124,15 +124,72 @@
             margin-bottom: 2rem;
         }
 
-        /* About Section */
-        .about {
-            padding: 6rem 0;
-            animation: fadeInUp 1s ease;
+        /* Social Links Pop-Up */
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
         }
 
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+        .social-links a {
+            color: var(--text-color);
+            font-size: 24px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .social-links a::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .social-links a:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* About Me Section with Curtain Effect */
+        .about {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about:hover .tech-stack {
+            animation: none;
+        }
+
+        .about:hover .curtain {
+            width: 100%;
+        }
+
+        .curtain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary-color);
+            z-index: 1;
+            transition: width 1s ease;
         }
 
         .tech-stack {
@@ -140,6 +197,18 @@
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            position: relative;
+            z-index: 2;
+            animation: bounce 5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         .tech-item {
@@ -148,10 +217,20 @@
             background: rgba(255,255,255,0.05);
             border-radius: 10px;
             transition: var(--transition);
+            animation: float 3s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .tech-item:hover {
-            transform: translateY(-5px);
+            transform: scale(1.1);
             background: rgba(255,255,255,0.1);
         }
 
@@ -212,7 +291,7 @@
             padding-left: 1.5rem;
         }
 
-        /* Gmail and WhatsApp Section */
+        /* Contact Section */
         .contact-section {
             padding: 6rem 0;
             text-align: center;
@@ -354,8 +433,12 @@
                     <p class="tagline">I use code to make computers look smarter than they are.</p>
                     <p class="description">I am a software engineer with experience across Rwanda, Canada, and the United States, specializing in modular systems, interface design, and frontend web development.</p>
                     <div class="social-links">
-                        <a href="https://github.com/BYUSAA" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://linkedin.com/in/byusam" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/BYUSAA" target="_blank" data-tooltip="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/byusam" target="_blank" data-tooltip="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
                         <a href="#contact" class="btn btn-primary">Talk to me</a>
                     </div>
                 </div>
@@ -369,6 +452,7 @@
             <div class="container">
                 <h2 class="section-title">About Me</h2>
                 <p>From the moment I produced Hello world in the console of my first application, I knew I was hooked into the world of software development. But software development has never been just a job for me, it's offered me an engaging challenge to continually learn and improve my skills in creating high quality software.</p>
+                <div class="curtain"></div>
                 <div class="tech-stack">
                     <div class="tech-item">TypeScript</div>
                     <div class="tech-item">JavaScript</div>
