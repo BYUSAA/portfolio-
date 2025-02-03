@@ -105,6 +105,13 @@
             border-radius: 20px;
             object-fit: cover;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.05) rotateY(10deg);
+            box-shadow: 0 15px 40px rgba(100,108,255,0.4);
         }
 
         .title {
@@ -166,30 +173,14 @@
             transform: translateY(-3px);
         }
 
-        /* About Me Section with Curtain Effect */
+        /* About Me Section */
         .about {
             padding: 6rem 0;
-            position: relative;
-            overflow: hidden;
         }
 
-        .about:hover .tech-stack {
-            animation: none;
-        }
-
-        .about:hover .curtain {
-            width: 100%;
-        }
-
-        .curtain {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: var(--primary-color);
-            z-index: 1;
-            transition: width 1s ease;
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .tech-stack {
@@ -197,18 +188,6 @@
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
-            position: relative;
-            z-index: 2;
-            animation: bounce 5s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
         }
 
         .tech-item {
@@ -291,49 +270,6 @@
             padding-left: 1.5rem;
         }
 
-        /* Contact Section */
-        .contact-section {
-            padding: 6rem 0;
-            text-align: center;
-        }
-
-        .contact-icons {
-            display: flex;
-            justify-content: center;
-            gap: 4rem;
-            margin-top: 3rem;
-        }
-
-        .contact-icon {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            color: var(--text-color);
-            transition: var(--transition);
-        }
-
-        .contact-icon i {
-            font-size: 6rem;
-            color: var(--accent-color);
-            transition: var(--transition);
-        }
-
-        .contact-icon span {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .contact-icon:hover i {
-            transform: scale(1.2);
-            color: #fff;
-        }
-
-        .contact-icon:hover span {
-            color: var(--accent-color);
-        }
-
         /* Footer */
         footer {
             padding: 4rem 0;
@@ -342,8 +278,32 @@
             animation: fadeInUp 1s ease;
         }
 
-        .footer-social-links {
-            padding-left: 390px;
+        .footer-tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-tech-item {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 25px;
+            transition: var(--transition);
+            animation: float 3s infinite;
+            cursor: pointer;
+        }
+
+        .footer-tech-item:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 5px 15px rgba(100,108,255,0.2);
+        }
+
+        .footer-copyright {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #888;
         }
 
         /* Animations */
@@ -401,13 +361,8 @@
                 display: none;
             }
 
-            .contact-icons {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .contact-icon i {
-                font-size: 5rem;
+            .footer-tech-stack {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             }
         }
     </style>
@@ -452,7 +407,6 @@
             <div class="container">
                 <h2 class="section-title">About Me</h2>
                 <p>From the moment I produced Hello world in the console of my first application, I knew I was hooked into the world of software development. But software development has never been just a job for me, it's offered me an engaging challenge to continually learn and improve my skills in creating high quality software.</p>
-                <div class="curtain"></div>
                 <div class="tech-stack">
                     <div class="tech-item">TypeScript</div>
                     <div class="tech-item">JavaScript</div>
@@ -536,14 +490,20 @@
 
     <footer>
         <div class="container">
-            <div class="social-links">
-                <div class="footer-social-links">
-                    <a href="https://github.com/" target="_blank">GitHub</a>
-                    <a href="https://linkedin.com/in/byusam" target="_blank">LinkedIn</a>
-                    <a href="mailto:byusammartin@gmail.com">Email</a>
-                </div>
+            <div class="footer-tech-stack">
+                <div class="footer-tech-item">TypeScript</div>
+                <div class="footer-tech-item">JavaScript</div>
+                <div class="footer-tech-item">HTML & CSS</div>
+                <div class="footer-tech-item">React</div>
+                <div class="footer-tech-item">Next.js</div>
+                <div class="footer-tech-item">Node.js</div>
+                <div class="footer-tech-item">REST APIs</div>
+                <div class="footer-tech-item">Git</div>
+                <div class="footer-tech-item">WordPress</div>
             </div>
-            <p>© 2024 Byusa M Martin De Poles. All rights reserved.</p>
+            <div class="footer-copyright">
+                © 2025 Byusa M Martin De Poles. All rights reserved.
+            </div>
         </div>
     </footer>
 
