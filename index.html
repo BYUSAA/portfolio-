@@ -166,18 +166,49 @@
             transform: translateY(-3px);
         }
 
-        /* About Me Section */
+        /* About Me Section with Curtain Effect */
         .about {
             padding: 6rem 0;
             position: relative;
             overflow: hidden;
         }
 
+        .about:hover .tech-stack {
+            animation: none;
+        }
+
+        .about:hover .curtain {
+            width: 100%;
+        }
+
+        .curtain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary-color);
+            z-index: 1;
+            transition: width 1s ease;
+        }
+
         .tech-stack {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            position: relative;
+            z-index: 2;
+            animation: bounce 5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         .tech-item {
@@ -186,6 +217,7 @@
             background: rgba(255,255,255,0.05);
             border-radius: 10px;
             transition: var(--transition);
+            animation: float 3s infinite;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -193,10 +225,9 @@
             font-weight: bold;
             color: var(--accent-color);
             border: 1px solid rgba(255,255,255,0.1);
-            animation: bounce 2s infinite, spin 4s infinite linear;
         }
 
-        @keyframes bounce {
+        @keyframes float {
             0%, 100% {
                 transform: translateY(0);
             }
@@ -205,17 +236,8 @@
             }
         }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
         .tech-item:hover {
-            transform: scale(1.1) rotate(360deg);
+            transform: scale(1.1);
             background: rgba(255,255,255,0.1);
             box-shadow: 0 10px 20px rgba(100,108,255,0.2);
         }
@@ -416,7 +438,7 @@
             }
 
             .tech-stack {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             }
 
             .tech-item {
@@ -466,6 +488,7 @@
             <div class="container">
                 <h2 class="section-title">About Me</h2>
                 <p>From the moment I produced Hello world in the console of my first application, I knew I was hooked into the world of software development. But software development has never been just a job for me, it's offered me an engaging challenge to continually learn and improve my skills in creating high quality software.</p>
+                <div class="curtain"></div>
                 <div class="tech-stack">
                     <div class="tech-item">Python</div>
                     <div class="tech-item">Django</div>
